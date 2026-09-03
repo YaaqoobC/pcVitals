@@ -1,6 +1,9 @@
 # pcVitals
 Embedded project for displaying pc vital metrics in my pc case. 
 
+![General Architectural Diagram](images/general_arch_diagram.png)
+
+
 # Steps:
 1. Downloaded `LibreHardwareMonitor.zip` from https://github.com/LibreHardwareMonitor/LibreHardwareMonitor/releases -> under assets
 2. Run the `LibreHardwareMonitor.exe` file as an administrator
