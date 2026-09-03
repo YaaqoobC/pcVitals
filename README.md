@@ -1,7 +1,7 @@
 # pcVitals
 Embedded project for displaying pc vital metrics in my pc case. 
 
-![General Architectural Diagram](images/general_arch_diagram.png)
+![General Architectural Diagram](images/general_arch_diagram_v2.png)
 
 
 # Steps:
