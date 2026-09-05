@@ -29,11 +29,8 @@ int main() {
     while (true) {
         std::string responseText;
 
-        if (monitor.FetchJson(responseText))
-        {
-            std::cout << "[pcVitals] Received "
-                    << responseText.size()
-                    << " bytes\n";
+        if (monitor.FetchJson(responseText)) {
+            std::cout << "[pcVitals] Received " << responseText.size() << " bytes\n";
 
             PcStats stats = ParseJSON(responseText);
             PrintStats(stats);
@@ -59,15 +56,15 @@ void PrintStats(const PcStats& stats) {
 
     std::cout << "\n===== PC Stats =====\n";
 
-    std::cout << "CPU Temperature: " << stats.cpuTemperature << " C\n";
-    std::cout << "CPU Usage: " << stats.cpuUsage << " %\n";
-    std::cout << "CPU Clock: " << stats.cpuClockMHz << " MHz\n";
+    std::cout << "CPU Temperature: " << stats.cpuTemp << " C\n";
+    std::cout << "CPU Usage: " << stats.cpuLoad << " %\n";
+    std::cout << "CPU Clock: " << stats.cpuClk << " MHz\n";
 
-    std::cout << "GPU Temperature: " << stats.gpuTemperature << " C\n";
-    std::cout << "GPU Usage: " << stats.gpuUsage << " %\n";
-    std::cout << "GPU Clock: " << stats.gpuClockMHz << " MHz\n";
+    std::cout << "GPU Temperature: " << stats.gpuTemp << " C\n";
+    std::cout << "GPU Usage: " << stats.gpuLoad << " %\n";
+    std::cout << "GPU VRAM: " << stats.gpuVRAM << " MB\n";
 
-    std::cout << "GPU VRAM: " << stats.gpuMemoryUsedMB << " MB\n";
+    std::cout << "RAM Usage: " << stats.ramUsage << " MB\n";
 
     std::cout << "====================\n";
 }
