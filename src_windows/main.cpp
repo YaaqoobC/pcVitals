@@ -8,10 +8,12 @@
 #include "Parser.h"
 #include "SerialPort.h"
 
+#define COM_PORT "COM6"
+
 // Function Declaration:
 void PrintBanner();
 void PrintStats(const PcStats& stats);
-void Sleep(int seconds);
+void Sleep(int value, bool isMs);
 
 int main() {
     PrintBanner();
@@ -25,12 +27,11 @@ int main() {
     std::cout << "[pcVitals] Connected to LibreHardwareMonitor!\n";
 
     // Init serial port
-    std::string comPort = "COM5";
-    SerialPort serial(comPort);
+    SerialPort serial(COM_PORT);
     if (serial.IsConnected()) {
-        std::cout << "[pcVitals] Successfully connected to " << comPort << "!\n";
+        std::cout << "[pcVitals] Successfully connected to " << COM_PORT << "!\n";
     } else {
-        std::cerr << "[WARN] Failed to connect to " << comPort << ". Continuing without serial...\n";
+        std::cerr << "[WARN] Failed to connect to " << COM_PORT << ". Continuing without serial...\n";
     }
 
     // Enter main loop
@@ -55,6 +56,14 @@ int main() {
 
                 if (serial.WriteString(stringStream.str())) {
                     std::cout << "[pcVitals] Sent payload to RP2040: " << stringStream.str();
+
+                    // Sleep(50, true);
+                    // char rxBuffer[256];
+                    // int bytesRead = serial.Read(rxBuffer, sizeof(rxBuffer));
+                    // if (bytesRead > 0) {
+                    //     std::cout << "[pcVitals] Pico has responded with: " << rxBuffer;
+                    // }
+
                 } else {
                     std::cerr << "[WARN] Failed to write to serial port.\n";
                 }
@@ -63,7 +72,7 @@ int main() {
             std::cout << "[WARN] No data received.\n";
         }
 
-        Sleep(1);
+        Sleep(1, false);
     }
 
     return 0;
@@ -92,7 +101,10 @@ void PrintStats(const PcStats& stats) {
     std::cout << "====================\n";
 }
 
-void Sleep(int seconds) {
+void Sleep(int value, bool isMs) {
     // Use chrono library since it is platform agnostic
-    std::this_thread::sleep_for(std::chrono::seconds(seconds));
+    if (isMs)
+        std::this_thread::sleep_for(std::chrono::milliseconds(value));
+    else
+        std::this_thread::sleep_for(std::chrono::seconds(value));
 }

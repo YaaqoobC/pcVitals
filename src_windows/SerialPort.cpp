@@ -82,3 +82,16 @@ bool SerialPort::Write(const char* data, DWORD size) {
 bool SerialPort::WriteString(const std::string& str) {
     return Write(str.c_str(), str.length());
 }
+
+// Use this to read the 'acknowledgement' from the pico when it receives the data.
+int SerialPort::Read(char* buffer, DWORD bufferSize) {
+    DWORD bytesRead = 0;
+    ClearCommError(hSerial, NULL, NULL);
+    
+    // ReadFile will check the incoming serial buffer
+    if (ReadFile(hSerial, buffer, bufferSize - 1, &bytesRead, NULL)) {
+        buffer[bytesRead] = '\0'; // Ensure it's a valid C-string
+        return bytesRead;
+    }
+    return 0;
+}
