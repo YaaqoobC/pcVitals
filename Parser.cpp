@@ -16,7 +16,6 @@ namespace {
 
         // Did this node match the current path element?
         if (text == path[depth]) {
-
             // If this is the final node try and get the value?
             if (depth == path.size() - 1) {
                 if (!node.contains("Value") || node["Value"].is_null())
@@ -68,21 +67,21 @@ PcStats ParseJSON(const std::string& responseText) {
         std::vector<std::string> cpuTemp = {"AMD Ryzen 5 7600X", "Temperatures", "Package"};
         std::vector<std::string> cpuClk = {"AMD Ryzen 5 7600X", "Clocks", "Cores (Average)"};
         std::vector<std::string> cpuLoad = {"AMD Ryzen 5 7600X", "Load", "CPU Total"};
-        FindSensor(stats.cpuTemp, root, cpuTemp);
-        FindSensor(stats.cpuClk, root, cpuClk);
-        FindSensor(stats.cpuLoad, root, cpuLoad);
+        FindSensor(stats.cpu.temp, root, cpuTemp);
+        FindSensor(stats.cpu.clk, root, cpuClk);
+        FindSensor(stats.cpu.load, root, cpuLoad);
 
         // Get the GPU Info:
         std::vector<std::string> gpuTemp = {"NVIDIA GeForce RTX 4070 SUPER", "Temperatures", "GPU Core"};
         std::vector<std::string> gpuVRAM = {"NVIDIA GeForce RTX 4070 SUPER", "Data", "GPU Memory Used"};
         std::vector<std::string> gpuLoad = {"NVIDIA GeForce RTX 4070 SUPER", "Load", "GPU Core"};
-        FindSensor(stats.gpuTemp, root, gpuTemp);
-        FindSensor(stats.gpuVRAM, root, gpuVRAM);
-        FindSensor(stats.gpuLoad, root, gpuLoad);
+        FindSensor(stats.gpu.temp, root, gpuTemp);
+        FindSensor(stats.gpu.vram, root, gpuVRAM);
+        FindSensor(stats.gpu.load, root, gpuLoad);
 
         // Get the RAM Info:
         std::vector<std::string> ramUsage = {"Total Memory", "Data", "Memory Used"};
-        FindSensor(stats.ramUsage, root, ramUsage);
+        FindSensor(stats.ram.usage, root, ramUsage);
     }
     catch (const json::exception& e) {
         std::cerr << "[ERROR] JSON exception: " << e.what() << '\n';
