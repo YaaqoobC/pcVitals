@@ -1,0 +1,10 @@
+# CMake generation dependency list for this directory.
+C:/Program Files/CMake/share/cmake-4.4/Modules/CMakePackageConfigHelpers.cmake
+C:/Program Files/CMake/share/cmake-4.4/Modules/ExternalProject.cmake
+C:/Program Files/CMake/share/cmake-4.4/Modules/ExternalProject/shared_internal_commands.cmake
+C:/Program Files/CMake/share/cmake-4.4/Modules/GNUInstallDirs.cmake
+C:/Program Files/CMake/share/cmake-4.4/Modules/WriteBasicConfigVersionFile.cmake
+C:/Yaaqoob/Projects_WD/pcVitals/src_windows/build/_deps/json-src/CMakeLists.txt
+C:/Yaaqoob/Projects_WD/pcVitals/src_windows/build/_deps/json-src/cmake/config.cmake.in
+C:/Yaaqoob/Projects_WD/pcVitals/src_windows/build/_deps/json-src/cmake/nlohmann_jsonConfigVersion.cmake.in
+C:/Yaaqoob/Projects_WD/pcVitals/src_windows/build/_deps/json-src/cmake/pkg-config.pc.in

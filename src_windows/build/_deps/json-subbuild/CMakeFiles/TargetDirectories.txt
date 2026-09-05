@@ -1,0 +1,3 @@
+C:/Yaaqoob/Projects_WD/pcVitals/src_windows/build/_deps/json-subbuild/CMakeFiles/json-populate.dir
+C:/Yaaqoob/Projects_WD/pcVitals/src_windows/build/_deps/json-subbuild/CMakeFiles/ALL_BUILD.dir
+C:/Yaaqoob/Projects_WD/pcVitals/src_windows/build/_deps/json-subbuild/CMakeFiles/ZERO_CHECK.dir

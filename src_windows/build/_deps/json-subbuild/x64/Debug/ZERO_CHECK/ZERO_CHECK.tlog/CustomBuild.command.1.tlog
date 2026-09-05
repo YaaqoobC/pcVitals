@@ -1,0 +1,10 @@
+^C:\YAAQOOB\PROJECTS_WD\PCVITALS\SRC_WINDOWS\BUILD\_DEPS\JSON-SUBBUILD\CMAKEFILES\2CB6D1822B500461DAFD8EF2A3820A70\GENERATE.STAMP.RULE
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Yaaqoob/Projects_WD/pcVitals/src_windows/build/_deps/json-subbuild -BC:/Yaaqoob/Projects_WD/pcVitals/src_windows/build/_deps/json-subbuild --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file C:/Yaaqoob/Projects_WD/pcVitals/src_windows/build/_deps/json-subbuild/json-populate.slnx
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

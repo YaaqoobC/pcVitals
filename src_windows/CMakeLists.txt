@@ -22,6 +22,7 @@ add_executable(pcVitals
     main.cpp
     HardwareMonitor.cpp
     Parser.cpp
+    SerialPort.cpp
 )
 
 target_link_libraries(pcVitals PRIVATE

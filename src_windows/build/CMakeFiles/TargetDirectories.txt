@@ -1,0 +1,4 @@
+C:/Yaaqoob/Projects_WD/pcVitals/src_windows/build/CMakeFiles/pcVitals.dir
+C:/Yaaqoob/Projects_WD/pcVitals/src_windows/build/CMakeFiles/ALL_BUILD.dir
+C:/Yaaqoob/Projects_WD/pcVitals/src_windows/build/CMakeFiles/ZERO_CHECK.dir
+C:/Yaaqoob/Projects_WD/pcVitals/src_windows/build/_deps/json-build/CMakeFiles/ALL_BUILD.dir
