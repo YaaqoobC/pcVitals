@@ -4,6 +4,7 @@ Embedded project for displaying pc vital metrics in my pc case.
 ![General Architectural Diagram](images/general_arch_diagram_v2.png)
 
 # Data Pipeline:
+![Windows Side Architectural Diagram](images/windows_arch_diagram.png)
 1. Fetches raw hardware metrics from LibreHWMonitor's local web server.
 2. Parses the JSON response into an internal C++ struct.
 3. Serializes the metrics into a comma-delimited ASCII string.
