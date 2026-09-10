@@ -38,6 +38,7 @@ pico_sdk_init()
 add_executable(src_pico 
     src_pico.c 
     lcd.c
+    display.c
 )
 
 pico_set_program_name(src_pico "src_pico")
