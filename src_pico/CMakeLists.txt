@@ -35,7 +35,10 @@ pico_sdk_init()
 
 # Add executable. Default name is the project name, version 0.1
 
-add_executable(src_pico src_pico.c )
+add_executable(src_pico 
+    src_pico.c 
+    lcd.c
+)
 
 pico_set_program_name(src_pico "src_pico")
 pico_set_program_version(src_pico "0.1")
@@ -46,7 +49,8 @@ pico_enable_stdio_usb(src_pico 1)
 
 # Add the standard library to the build
 target_link_libraries(src_pico
-        pico_stdlib)
+    pico_stdlib
+)
 
 # Add the standard include files to the build
 target_include_directories(src_pico PRIVATE
@@ -55,8 +59,11 @@ target_include_directories(src_pico PRIVATE
 
 # Add any user requested libraries
 target_link_libraries(src_pico 
-        hardware_spi
-        )
+    hardware_spi
+)
 
 pico_add_extra_outputs(src_pico)
+
+# pico_set_printf_implementation(src_pico standard)
+
 
