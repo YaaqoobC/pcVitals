@@ -143,8 +143,8 @@ static const PageSpec pages[] = {
             .first_stat_block = {
                 .field = STAT_RAM_USED,
                 .unit = "GB",
-                .width = 4,
-                .precision = 1,
+                .width = 5,
+                .precision = 2,
             },
             .second_stat_block = {
                 .field = STAT_NONE
