@@ -1,8 +1,0 @@
-{
-	"InstallScripts" : 
-	[
-		"C:/Yaaqoob/Projects_WD/pcVitals/src_windows/build/cmake_install.cmake",
-		"C:/Yaaqoob/Projects_WD/pcVitals/src_windows/build/_deps/json-build/cmake_install.cmake"
-	],
-	"Parallel" : false
-}
