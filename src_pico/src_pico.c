@@ -3,47 +3,27 @@
 #include "lcd.h"
 #include "stats.h"
 #include "display.h"
-typedef struct {
-    float cpuTemp;
-    float cpuLoad;
-    float cpuClk;
 
-    float gpuTemp;
-    float gpuLoad;
-    float gpuVram;
-
-    float ramUsage;
-} Stats;
-
-void printScreen(char *header, char *line2) {
-    lcd_clear();
-    lcd_set_cursor(0, 0);
-    lcd_print(header);
-    lcd_set_cursor(1, 0);
-    lcd_print(line2);
-
-    sleep_ms(2000);
-}
-
+#define DISPLAY_REFRESH_MS 250
 
 int main() {
     stdio_init_all();
     display_init();
 
     const PcStats stats = {
-        .cpu_temp = 45.0f,
-        .cpu_load = 85.0f,
-        .cpu_clk = 3.8f,
+        .cpu_temp = 43.0f,
+        .cpu_load = 13.0f,
+        .cpu_clk = 4200.0f,
 
-        .gpu_temp = 50.0f,
-        .gpu_load = 27.0f,
-        .gpu_vram = 1.29f,
+        .gpu_temp = 51.0f,
+        .gpu_load = 35.0f,
+        .gpu_vram = 2057.0f,
 
-        .ram_used = 16.24f
+        .ram_used = 15.0f
     };
 
     while (true) {
         display_show_stats(&stats);
-        sleep_ms(2000);
+        sleep_ms(DISPLAY_REFRESH_MS);
     }
 }
