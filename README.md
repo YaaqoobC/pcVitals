@@ -4,6 +4,8 @@ pcVitals is a small embedded/desktop project that displays live PC hardware stat
 
 The Windows app reads sensor data from LibreHardwareMonitor, formats the values as a simple text packet, and sends it to an RP2040 board over USB serial. The Pico receives the packet, parses it, and updates the LCD using a custom 4-bit parallel HD44780-style driver.
 
+![Working pcVitals setup](images/working_setup.jpg)
+
 ![General Architecture](images/general_arch_diagram_v2.png)
 
 ## Project Layout
@@ -130,15 +132,23 @@ Main responsibilities:
 - Fetch `/data.json` from `localhost:8085`.
 - Parse selected sensor values with `nlohmann/json`.
 - Open the Pico's USB serial COM port.
-- Send a stats packet once per second.
+- Wait until the Pico's serial connection is available.
+- Send a stats packet once per second through `SerialPort::WriteStats`.
+- Re-enter the serial wait loop if a write fails.
 
 The COM port is currently hard-coded in `src_windows/main.cpp`:
 
 ```cpp
-#define COM_PORT "COM6"
+constexpr const char* COM_PORT = "COM6";
 ```
 
 Update this value if Windows assigns your Pico a different COM port.
+
+At startup, the app does not continue without serial. If the Pico is not available, it retries the configured COM port every 5 seconds:
+
+```cpp
+constexpr int SERIAL_RECONNECT_RETRY_SECONDS = 5;
+```
 
 The parser currently looks for these sensor names:
 
@@ -194,6 +204,6 @@ cmake --build build --config Debug
 ## Troubleshooting
 
 - If the Windows app cannot connect to LibreHardwareMonitor, make sure the remote web server is enabled and running on port `8085`.
-- If the app cannot open the serial port, check Device Manager for the Pico's COM port and update `COM_PORT` in `src_windows/main.cpp`.
+- If the app keeps retrying the serial connection, check Device Manager for the Pico's COM port and update `COM_PORT` in `src_windows/main.cpp`.
 - If the LCD powers on but shows blocks or blank text, adjust the contrast potentiometer.
 - If the LCD does not update, confirm that the Pico firmware was built with USB stdio enabled and that the Windows app is sending packets to the correct COM port.
