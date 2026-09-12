@@ -4,7 +4,7 @@ pcVitals is a small embedded/desktop project that displays live PC hardware stat
 
 The Windows app reads sensor data from LibreHardwareMonitor, formats the values as a simple text packet, and sends it to an RP2040 board over USB serial. The Pico receives the packet, parses it, and updates the LCD using a custom 4-bit parallel HD44780-style driver.
 
-![Working pcVitals setup](images/working_setup.jpg)
+<!-- ![Working pcVitals setup](images/working_setup.jpg) -->
 
 <video width="640" height="360" controls>
   <source src="images/PcVitals.mp4" type="video/mp4">
