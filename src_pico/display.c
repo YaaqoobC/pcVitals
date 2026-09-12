@@ -13,7 +13,8 @@
 #define GPU_PREFIX "GPU ->"
 #define RAM_PREFIX "RAM ->"
 
-#define CAROUSEL_INTERVAL_MS 3000
+// A page will only change if its been at least this many msS
+#define CAROUSEL_INTERVAL_MS 4000
 
 typedef enum {
     STAT_NONE,
@@ -65,6 +66,7 @@ static float get_stat_value(const PcStats *stats, StatField field);
 static void display_print_line(uint8_t row, const char *text);
 static void format_line(char *out, size_t out_size, const PcStats *stats, const LineSpec *spec);
 
+// The different pages. To display something else just add a page.
 static const PageSpec pages[] = {
     {
         // Page 0: CPU/GPU temperature + load

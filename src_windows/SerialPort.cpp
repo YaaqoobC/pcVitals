@@ -34,11 +34,17 @@ SerialPort::SerialPort(const std::string& portName) : connected(false) {
     dcbSerialParams.StopBits = ONESTOPBIT;
     dcbSerialParams.Parity   = NOPARITY;
 
+    dcbSerialParams.fDtrControl = DTR_CONTROL_ENABLE;
+    dcbSerialParams.fRtsControl = RTS_CONTROL_ENABLE;
+
     if (!SetCommState(hSerial, &dcbSerialParams)) {
         std::cerr << "[ERROR] Failed to set serial parameters.\n";
         CloseHandle(hSerial);
         return;
     }
+
+    EscapeCommFunction(hSerial, SETDTR);
+    EscapeCommFunction(hSerial, SETRTS);
 
     COMMTIMEOUTS timeouts = {0};
     timeouts.ReadIntervalTimeout         = 50;

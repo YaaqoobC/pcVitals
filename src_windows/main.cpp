@@ -30,6 +30,8 @@ int main() {
     SerialPort serial(COM_PORT);
     if (serial.IsConnected()) {
         std::cout << "[pcVitals] Successfully connected to " << COM_PORT << "!\n";
+        std::cout << "[pcVitals] Waiting for RP2040 USB serial to settle...\n";
+        Sleep(2, false);
     } else {
         std::cerr << "[WARN] Failed to connect to " << COM_PORT << ". Continuing without serial...\n";
     }
@@ -52,7 +54,7 @@ int main() {
                 stringStream << "S,"
                              << stats.cpu.temp << "," << stats.cpu.load << "," << stats.cpu.clk << ","
                              << stats.gpu.temp << "," << stats.gpu.load << "," << stats.gpu.vram << ","
-                             << stats.ram.usage << ",E\n";
+                             << stats.ram.usage << "\n";
 
                 if (serial.WriteString(stringStream.str())) {
                     std::cout << "[pcVitals] Sent payload to RP2040: " << stringStream.str();
