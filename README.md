@@ -159,7 +159,19 @@ The parser currently looks for these sensor names:
 
 If the project is run on different hardware, the sensor paths in `src_windows/Parser.cpp` may need to be updated.
 
-## Build and Run
+## Automation: Running on Windows Startup
+
+The Pico firmware starts automatically when the board receives USB power. To get everything working autonomously, the Windows side needs to be run in the background on startup of the PC.
+
+1. Create a launcher batch file
+2. Create a hidden VBScript launcher 
+3. Create a task scheduler task
+    - trigger on log on
+    - start a `wscript.exe` with the path to the vbscript as an argument
+
+Note that the Libre Hardware Monitor can be configured in options to run on startup, run the webserver, and run in the background.
+
+## Manual Build and Run
 
 ### 1. Start LibreHardwareMonitor
 
