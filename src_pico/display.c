@@ -157,6 +157,17 @@ static const PageSpec pages[] = {
     }
 };
 
+static const PageSpec inactivePage = {
+    .line0 = {
+        .type = LINE_TEXT,
+        .text = "PC Vitals"
+    },
+    .line1 = {
+        .type = LINE_TEXT,
+        .text = "Inactive ..."
+    }
+};
+
 #define PAGE_COUNT ((uint8_t)(sizeof(pages) / sizeof(pages[0])))
 
 static float get_stat_value(const PcStats *stats, StatField field) {
@@ -259,6 +270,20 @@ void display_init(void) {
 }
 
 void display_show_stats(const PcStats *stats) {
+    // If the inactive flag was set display the inactive screen
+    if (stats->inactive) {
+        char line0[LCD_COLS + 1];
+        char line1[LCD_COLS + 1];
+
+        // Format the strings then display
+        format_line(line0, sizeof(line0), NULL, &inactivePage.line0);
+        format_line(line1, sizeof(line1), NULL, &inactivePage.line1);
+        display_print_line(0, line0);
+        display_print_line(1, line1);
+
+        return;
+    }
+
     uint32_t now = to_ms_since_boot(get_absolute_time());
 
     // Check if enough time has passed to display the next page. If we are at the end loop back

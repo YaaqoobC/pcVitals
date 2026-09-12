@@ -2,7 +2,9 @@
 
 pcVitals is a small embedded/desktop project that displays live PC hardware stats on a 16x2 character LCD mounted inside a PC case.
 
-The Windows app reads sensor data from LibreHardwareMonitor, formats the values as a simple text packet, and sends it to an RP2040 board over USB serial. The Pico receives the packet, parses it, and updates the LCD using a custom 4-bit parallel HD44780-style driver.
+The Windows app reads sensor data from LibreHardwareMonitor, formats the values as a simple text packet, and sends it to an RP2040 board over USB serial. The Pico receives the packet, parses it, and updates the LCD using a custom 4-bit parallel HD44780-style driver. 
+
+If the pico fails to receive data within 5 seconds an inactive screen will be displayed. On the other hand if the Windows Script fails to connect to the open COM port, it will sleep for 5 seconds then try again. This allows for the system to be fault tolerant in such a way that if any component does not work nothing will crash.  
 
 <!-- ![Working pcVitals setup](images/working_setup.jpg) -->
 [![pcVitals demo](images/working_setup.jpg)](https://github.com/user-attachments/assets/daa78afa-f10d-4f2a-b069-bae68ebc7bb2)

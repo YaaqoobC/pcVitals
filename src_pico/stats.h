@@ -1,5 +1,7 @@
 #pragma once
 
+#include <stdbool.h>
+
 typedef struct {
     float cpu_temp;
     float cpu_load;
@@ -10,4 +12,6 @@ typedef struct {
     float gpu_vram;
 
     float ram_used;
+
+    bool inactive;
 } PcStats;

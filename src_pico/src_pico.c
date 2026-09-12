@@ -31,7 +31,9 @@ int main() {
         .gpu_load = 0.0f,
         .gpu_vram = 0.0f,
 
-        .ram_used = 0.0f
+        .ram_used = 0.0f,
+
+        .inactive = true
     };
 
     while (true) {
