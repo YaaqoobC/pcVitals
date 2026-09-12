@@ -6,6 +6,10 @@ The Windows app reads sensor data from LibreHardwareMonitor, formats the values 
 
 ![Working pcVitals setup](images/working_setup.jpg)
 
+<video width="640" height="360" controls>
+  <source src="images/PcVitals.mp4" type="video/mp4">
+</video>
+
 ![General Architecture](images/general_arch_diagram_v3.png)
 
 ## Project Layout
