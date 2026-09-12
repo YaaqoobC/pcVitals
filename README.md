@@ -6,7 +6,7 @@ The Windows app reads sensor data from LibreHardwareMonitor, formats the values 
 
 ![Working pcVitals setup](images/working_setup.jpg)
 
-![General Architecture](images/general_arch_diagram_v2.png)
+![General Architecture](images/general_arch_diagram_v3.png)
 
 ## Project Layout
 
